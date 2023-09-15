@@ -8,6 +8,7 @@ public class aMultiB {
         a = aa.nextInt();
         b = aa.nextInt();
         System.out.print(a*b);
+        aa.close();
     }
     
 }

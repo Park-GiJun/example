@@ -8,6 +8,7 @@ public class aMinusB {
         a = aa.nextInt();
         b = aa.nextInt();
         System.out.println(a-b);
+        aa.close();
     }
     
 }
