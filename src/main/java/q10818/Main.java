@@ -23,7 +23,6 @@ public class Main {
 	            if (st.hasMoreTokens()) {
 	                arry[i] = Integer.parseInt(st.nextToken());
 	            } else {
-	                bw.write("입력이 부족합니다.");
 	                bw.flush();
 	                bw.close();
 	                br.close();
