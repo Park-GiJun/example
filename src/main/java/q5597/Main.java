@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 
 public class Main {
 
@@ -13,26 +12,26 @@ public class Main {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
-		int n = 30;
-		int[] arry1 = new int[n];
-		
-		for(int i =0; i<arry1.length;i++) {
-			arry1[i] = i;
+
+		int[] arr = new int[30];
+
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = 0;
 		}
-		Arrays.sort(arry1);
-		
-		int m = 30 ;
-		int[] arry2 = new int[m];
-		arry2[0] = 31;
-		arry2[1] = 31;
-		for(int i =2; i<arry2.length; i++) {
-			arry2[i] = Integer.parseInt(br.readLine());
+
+		for (int i = 0; i < 28; i++) {
+			int j = Integer.parseInt(br.readLine());
+			arr[j - 1] = j;
 		}
-		Arrays.sort(arry2);
-		
-		
-		
+		for (int i = 0; i < 30; i++) {
+			if (arr[i] == 0) {
+				bw.write(String.valueOf(i + 1));
+				bw.newLine();
+			}
+		}
+		bw.flush();
+		bw.close();
+		br.close();
 
 	}
 
