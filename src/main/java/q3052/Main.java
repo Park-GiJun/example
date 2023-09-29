@@ -14,19 +14,27 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		int[] arr = new int[10];
-
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = br.read();
+		int[] arr = new int[42];
+		int count=0;
+		for (int i = 0; i < 10; i++) {
+			int n = Integer.parseInt(br.readLine());
+			int a = n%42;
+			arr[a]++;
 		}
-		int[] newArr = new int[arr.length];
-
-		for (int j = 0; j < newArr.length; j++) {
-			newArr[j] = arr[j] % 42;
+		
+		
+		
+		for (int i = 0; i <42; i++) {
+			if(arr[i] > 0) {
+				count++;
+			}
+			
+			
 		}
-		for (int k = 0; 0 < newArr.length; k++) {
-			System.out.print(newArr[k]);
-		}
-
+		
+		bw.write(String.valueOf(count));
+		bw.flush();
+		bw.close();
+		br.close();
 	}
 }
