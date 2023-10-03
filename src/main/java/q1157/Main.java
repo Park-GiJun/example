@@ -12,19 +12,37 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		String[] a = br.readLine().toUpperCase().split("");
-		int[] b = new int[26];
+		String input = br.readLine().toUpperCase(); // 입력 문자열을 대문자로 변환
+		int[] frequency = new int[52]; // 대문자와 소문자 알파벳을 고려한 배열 크기
 
-		for (int i = 0; i < a.length - 1; i++) {
-			int c = (int)a[i].charAt(i) - 65;
-			b[c]++;
-
+		for (int i = 0; i < input.length(); i++) {
+			char c = input.charAt(i);
+			if ('A' <= c && c <= 'Z') { // 대문자 알파벳일 경우
+				frequency[c - 'A']++;
+			} else if ('a' <= c && c <= 'z') { // 소문자 알파벳일 경우
+				frequency[c - 'a' + 26]++;
+			}
 		}
 
+		int maxFrequency = 0;
+		char mostFrequentChar = '?';
+
+		for (int i = 0; i < 52; i++) {
+			if (frequency[i] > maxFrequency) {
+				maxFrequency = frequency[i];
+				if (i < 26) {
+					mostFrequentChar = (char) ('A' + i);
+				} else {
+					mostFrequentChar = (char) ('a' + i - 26);
+				}
+			} else if (frequency[i] == maxFrequency) {
+				mostFrequentChar = '?'; // 최댓값이 중복될 경우
+			}
+		}
+
+		bw.write(mostFrequentChar);
 		bw.flush();
 		bw.close();
 		br.close();
-
 	}
-
 }

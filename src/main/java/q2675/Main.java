@@ -21,7 +21,7 @@ public class Main {
 			int b = Integer.parseInt(st.nextToken());
 			String c = st.nextToken();
 
-			for (int j = 0; j < b-1; j++) {
+			for (int j = 0; j < c.length(); j++) {
 				 char currentChar = c.charAt(j);
 				for (int k = 0; k < b; k++) {
 					bw.write(currentChar);
