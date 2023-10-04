@@ -14,25 +14,58 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		String a = br.readLine(); // 받은 문자열
-		List<String> cros = new ArrayList<>(); // 크로아티아어 리스트
-
-		for (int i = 0; i < a.length(); i++) {
-			int b;
-			if(a.charAt(0) == 'd') {
-				if(a.charAt(1)== 'z') {
-					if(a.charAt(2)=='=') {
-						b = 3;
-					}
+		String a = br.readLine();
+		int b = 0;
+		int i = 0;
+		while (i < a.length()) {
+			char currentChar = a.charAt(i);
+			if (currentChar == 'c' && i < a.length() - 1) {
+				char nextChar = a.charAt(i + 1);
+				if (nextChar == '=' || nextChar == '-') {
+					b++;
+					i += 2; // 'c='나 'c-'는 한 글자로 처리
+				} else {
+					b++;
+					i++;
 				}
+			} else if (currentChar == 'd' && i < a.length() - 1) {
+				char nextChar = a.charAt(i + 1);
+				if (nextChar == 'z' && i < a.length() - 2 && a.charAt(i + 2) == '=') {
+					b++;
+					i += 3; // 'dz='는 한 글자로 처리
+				} else if (nextChar == '-') {
+					b++;
+					i += 2; // 'd-'는 한 글자로 처리
+				} else {
+					b++;
+					i++;
+				}
+			} else if ((currentChar == 's' || currentChar == 'z') && i < a.length() - 1) {
+				char nextChar = a.charAt(i + 1);
+				if (nextChar == '=') {
+					b++;
+					i += 2; // 's='나 'z='는 한 글자로 처리
+				} else {
+					b++;
+					i++;
+				}
+			} else if ((currentChar == 'l' || currentChar == 'n') && i < a.length() - 1) {
+				char nextChar = a.charAt(i + 1);
+				if (nextChar == 'j') {
+					b++;
+					i += 2; // 'lj'나 'nj'는 한 글자로 처리
+				} else {
+					b++;
+					i++;
+				}
+			} else {
+				b++;
+				i++;
 			}
-			if(cro.equals("c=") && cro.equals("c-") && cro.equals("dz=") && cro.equals("d-") && cro.equals("lj") && cro.equals("nj")
-				&& cro.equals("s=") && cro.equals("z=")) {
-				
-			}
-				
-		
 		}
-		
+		bw.write(String.valueOf(b));
+		bw.flush();
+		bw.close();
+		br.close();
 	}
 }
