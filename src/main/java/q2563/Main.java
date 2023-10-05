@@ -15,14 +15,38 @@ public class Main {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
+
 		int[][] xY = new int[100][100];
+		int cntOne = 0;
+		int cntOver = 0;
+
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 100; j++) {
+				xY[i][j] = 0;
+			}
+		}
 
 		int cnt = Integer.parseInt(br.readLine());
-		for (int i = 0; i <cnt; i++) {
+		for (int i = 0; i < cnt; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			
+			int xx = Integer.parseInt(st.nextToken());
+			int yy = Integer.parseInt(st.nextToken());
+			for (int k = 0; k < 10; k++) {
+				for (int l = 0; l < 10; l++) {
+					xY[xx + k][yy + l]++;
+				}
+			}
 		}
-	}
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 100; j++) {
+				if (xY[i][j] == 1) {
+					cntOne++;
+				} else if (xY[i][j] > 1) {
+					cntOver++;
+				}
+			}
+		}
+		System.out.println(cntOne + cntOver);
 
+	}
 }
