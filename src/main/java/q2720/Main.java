@@ -22,55 +22,54 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws NumberFormatException, IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int T = Integer.parseInt(br.readLine());
-        int[][] opt = new int[T][4];
+		int T = Integer.parseInt(br.readLine());
+		int[][] opt = new int[T][4];
 
-        for (int i = 0; i < T; i++) {
-            int Q = 0;
-            int D = 0;
-            int N = 0;
-            int P = 0;
-            int C = Integer.parseInt(br.readLine());
+		for (int i = 0; i < T; i++) {
+			int Q = 0;
+			int D = 0;
+			int N = 0;
+			int P = 0;
+			int C = Integer.parseInt(br.readLine());
 
-            while (C >= 25) {
-                C = C - 25;
-                Q++;
-            }
-            while (C >= 10) {
-                C = C - 10;
-                D++;
-            }
-            while (C >= 5) {
-                C = C - 5;
-                N++;
-            }
-            while (C >= 1) {
-                C = C - 1;
-                P++;
-            }
-            
-            // 결과 저장
-            opt[i][0] = Q;
-            opt[i][1] = D;
-            opt[i][2] = N;
-            opt[i][3] = P;
-        }
-        
-        // 출력 부분
-        for (int i = 0; i < T; i++) {
-            for (int j = 0; j < 4; j++) {
-                bw.write(String.valueOf(opt[i][j])+ " ");
-            }
-            bw.newLine(); // 다음 테스트 케이스를 위해 개행 추가
-        }
-        
-        // BufferedWriter를 닫아줌
-        bw.close();
-        br.close();
-    }
+			while (C >= 25) {
+				C = C - 25;
+				Q++;
+			}
+			while (C >= 10) {
+				C = C - 10;
+				D++;
+			}
+			while (C >= 5) {
+				C = C - 5;
+				N++;
+			}
+			while (C >= 1) {
+				C = C - 1;
+				P++;
+			}
+
+			// 결과 저장
+			opt[i][0] = Q;
+			opt[i][1] = D;
+			opt[i][2] = N;
+			opt[i][3] = P;
+		}
+
+		for (int i = 0; i < T; i++) {
+			for (int j = 0; j < 4; j++) {
+				bw.write(String.valueOf(opt[i][j]) + " ");
+			}
+			bw.newLine();
+		}
+
+		bw.flush();
+		bw.close();
+		br.close();
+	}
 }
