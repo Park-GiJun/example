@@ -46,7 +46,10 @@ public class Main {
 				}
 			}
 		}
-		System.out.println(cntOne + cntOver);
+		bw.write(String.valueOf(cntOne+cntOver));
+		bw.flush();
+		bw.close();
+		br.close();
 
 	}
 }
