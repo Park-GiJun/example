@@ -24,12 +24,12 @@ public class Main {
 				arr[i] = Integer.parseInt(st.nextToken());
 			}
 		}
-		
-		int sum =0;
-		for(int i = 0 ; i < arr.length; i++) {
-			sum+=arr[i]*arr[i];
+
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i] * arr[i];
 		}
-		bw.write(String.valueOf(sum%10));
+		bw.write(String.valueOf(sum % 10));
 		bw.flush();
 		bw.close();
 		br.close();
