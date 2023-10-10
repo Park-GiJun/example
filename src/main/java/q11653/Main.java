@@ -14,48 +14,23 @@ public class Main {
 
 		int n = Integer.parseInt(br.readLine());
 
-		boolean zero = true;
-		int b = 0;
-		
-
-		while (zero) {
-			int i = 0;
-			if (isPrime(i)) {
-				b = n / i++;
-				if (n / i == 0) {
-					zero = false;
-				}
-				bw.write(String.valueOf(b));
-			} else {
-				i++;
-			}
-
-		}
+		factorize(n, bw);
 
 		bw.flush();
 		bw.close();
 		br.close();
-
 	}
 
-	public static boolean isPrime(int num) {
-		if (num <= 1) {
-			return false;
-		}
-		if (num <= 3) {
-			return true;
-		}
-		if (num % 2 == 0 || num % 3 == 0) {
-			return false;
-		}
+	public static void factorize(int n, BufferedWriter bw) throws IOException {
+		int i = 2;
 
-		for (int i = 5; i * i <= num; i += 6) {
-			if (num % i == 0 || num % (i + 2) == 0) {
-				return false;
+		while (n > 1) {
+			if (n % i == 0) {
+				bw.write(String.valueOf(i) + "\n");
+				n = n / i;
+			} else {
+				i++;
 			}
 		}
-
-		return true;
 	}
-
 }
